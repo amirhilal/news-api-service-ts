@@ -1,0 +1,55 @@
+{
+  "version": "1",
+  "name": "News API",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "disableFollowingRedirect": true,
+  "disableCertificateValidation": false,
+  "disableUsingSystemProxy": false,
+  "folders": [
+    {
+      "name": "auth",
+      "path": "News API/auth",
+      "description": "Authentication related endpoints"
+    },
+    {
+      "name": "news",
+      "path": "News API/news",
+      "description": "News related endpoints"
+    }
+  ],
+  "environments": [
+    {
+      "name": "development",
+      "path": "environments/development.bru",
+      "default": true
+    }
+  ],
+  "requests": [
+    {
+      "name": "login",
+      "path": "News API/auth/login.bru"
+    },
+    {
+      "name": "get news list",
+      "path": "News API/news/get news list.bru"
+    },
+    {
+      "name": "get news by id",
+      "path": "News API/news/get news by id.bru"
+    }
+  ],
+  "settings": {
+    "options": {
+      "followRedirects": false,
+      "validateCertificates": true,
+      "useSystemProxy": false
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

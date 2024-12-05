@@ -1,0 +1,19 @@
+meta {
+  name: Get news by id
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/news/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 3
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiaWF0IjoxNzMzMzQ1MzY3LCJleHAiOjE3MzMzNDg5Njd9.yCNH_zZrwuLE1t5wlmoHNHiGTWsPbDBZ3vsOkYg7s6U
+}

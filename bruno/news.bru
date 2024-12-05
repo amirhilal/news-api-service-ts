@@ -1,0 +1,66 @@
+meta {
+  name: News API Collection
+  description: Collection of requests for the News API
+  type: collection
+}
+
+auth {
+  mode: bearer
+}
+
+vars {
+  baseUrl: http://localhost:3000
+}
+
+folders {
+  auth: Auth related endpoints
+  news: News related endpoints
+}
+
+scripts {
+  pre-request: |
+    // This runs before each request in the collection
+    // You can set up common headers or variables here
+    
+  post-response: |
+    // This runs after each request in the collection
+    // You can perform common assertions or cleanup here
+    if (response.status === 401) {
+      console.log("Authentication failed. Please check your token.");
+    }
+}
+
+docs {
+  # News API Documentation
+
+  This collection contains all the endpoints for the News API service.
+
+  ## Authentication
+  - Use the login endpoint to get a JWT token
+  - The token is automatically saved to environment variables
+  - Protected endpoints use the saved token
+
+  ## Available Endpoints
+  1. Auth
+     - POST /api/auth/login - Get authentication token
+  2. News
+     - GET /api/news - Get list of news (public)
+     - GET /api/news/:id - Get news details (protected)
+
+  ## Environment Setup
+  Make sure to:
+  1. Have the server running on localhost:3000
+  2. Set up your .env file with proper credentials
+  3. Use the development environment
+
+  ## Running Tests
+  1. Login first to get the token
+  2. Then run other requests in any order
+}
+
+tests {
+  // Collection-level tests
+  test("environment is properly set up", function() {
+    expect(bru.getEnvVar("baseUrl")).to.not.be.empty;
+  });
+}

@@ -1,0 +1,29 @@
+meta {
+  name: Get all news
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/news?page=1&limit=4
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 1
+  limit: 4
+}
+
+tests {
+  test("should return 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("should return object of news", function() {
+    expect(res.body).to.be.an('object');
+  });
+  test("should return object with pagination property", function() {
+    expect(res.body).to.have.property('pagination');
+  });
+}
